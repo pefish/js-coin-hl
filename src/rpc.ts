@@ -47,22 +47,105 @@ export default class Rpc {
   }
 
   async GetLastHeader (): Promise<any> {
-    const data = await this.requestRaw('Chain33.GetLastHeader', [])
-    if (data[`error`]) {
-      throw new ErrorHelper(data[`error`])
-    }
-    return data[`result`]
+    return await this.request('Chain33.GetLastHeader', [])
   }
 
   async getBlockHash (height: number): Promise<any> {
-    const data = await this.requestRaw('Chain33.GetBlockHash', [
+    const data = await this.request('Chain33.GetBlockHash', [
       {
         height,
       }
     ])
-    if (data[`error`]) {
-      throw new ErrorHelper(data[`error`])
-    }
-    return data[`result`][`hash`]
+    return data[`hash`]
+  }
+
+  async getBlockOverview (blockHash: string): Promise<any> {
+    return await this.request('Chain33.GetBlockOverview', [
+      {
+        hash: blockHash,
+      }
+    ])
+  }
+
+  async queryTransaction (txHash: string): Promise<any> {
+    return await this.request('Chain33.QueryTransaction', [
+      {
+        hash: txHash,
+      }
+    ])
+  }
+
+  async getBalance (address: string): Promise<any> {
+    return await this.request('Chain33.GetBalance', [
+      {
+        addresses: [address],
+        execer: `coins`,
+      }
+    ])
+  }
+
+  async createRawTransaction (toAddress: string, amount: string): Promise<any> {
+    return await this.request('Chain33.CreateRawTransaction', [
+      {
+        to: toAddress,
+        amount: amount.toNumber_(),
+        fee: 0,
+        note: ``,
+        execName: ``,
+      }
+    ])
+  }
+
+  /**
+   * 构造并发送不收手续费交易（平行链）
+   * @param {string} txHex 未签名的原始交易数据
+   * @param {string} payAddressPriv 用于付费的地址的私钥，这个地址要在主链上存在，并且里面有比特元用于支付手续费
+   * @returns {Promise<any>}
+   */
+  async createNoBalanceTransaction (txHex: string, payAddressPriv: string): Promise<any> {
+    return await this.request('Chain33.CreateNoBalanceTransaction', [
+      {
+        txHex,
+        privkey: payAddressPriv,
+        expire: `2h45m`,
+      }
+    ])
+  }
+
+  async signRawTx (txHex: string, priv: string): Promise<any> {
+    return await this.request('Chain33.SignRawTx', [
+      {
+        privkey: priv,
+        txHex,
+        expire: `2h45m`,
+        index: 2
+      }
+    ])
+  }
+
+  async sendTransaction (txHex: string): Promise<any> {
+    return await this.request('Chain33.SendTransaction', [
+      {
+        data: txHex,
+      }
+    ])
+  }
+
+  async isSync (): Promise<any> {
+    return await this.request('Chain33.IsSync', [])
+  }
+
+  async getLastBlockSequence (): Promise<any> {
+    return await this.request('Chain33.GetLastBlockSequence', [])
+  }
+
+  async getBlocks (height: number): Promise<any> {
+    return await this.request('Chain33.GetBlocks', [
+      {
+        start: height,
+        end: height,
+        isDetail: true,
+      }
+    ])
   }
 }
