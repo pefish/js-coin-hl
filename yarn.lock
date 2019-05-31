@@ -18,6 +18,65 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
+"@pefish/bitcoinjs-lib@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@pefish/bitcoinjs-lib/-/bitcoinjs-lib-5.2.0.tgz#19627c0b6b54cac5b57c6cd56a38de2f9f246ae8"
+  integrity sha512-/sSNzjJ6uLj1x83p1azGq11tCIJIrm3xfdnL0oxit5wij8JmNdE99PxP/2LwtaSpnKjgYBHma+16o1WXuEjFXQ==
+  dependencies:
+    "@types/node" "10.12.18"
+    bech32 "^1.1.2"
+    bip32 "^2.0.0"
+    bip66 "^1.1.0"
+    bitcoin-ops "^1.4.0"
+    bs58check "^2.0.0"
+    create-hash "^1.1.0"
+    create-hmac "^1.1.3"
+    merkle-lib "^2.0.10"
+    pushdata-bitcoin "^1.0.1"
+    randombytes "^2.0.1"
+    tiny-secp256k1 "^1.0.0"
+    typeforce "^1.11.3"
+    varuint-bitcoin "^1.0.4"
+    wif "^2.0.1"
+
+"@pefish/js-coin-btc@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@pefish/js-coin-btc/-/js-coin-btc-0.3.0.tgz#34b1cc4341e8b0cc94c8985dab36516918bab358"
+  integrity sha512-7VZGo8zZxSEv3hw9B0ar1/gRxHvo6g/lzjamn7ijzj1gE8H34k8giR2IIhwy9bgzP2an8eRdUlKIUc5CDGATKw==
+  dependencies:
+    "@pefish/bitcoinjs-lib" "^5.2.0"
+    bigi "^1.4.2"
+    bip32 "^1.0.4"
+    bip39 "^3.0.1"
+    bitcoin-core "^2.0.0"
+    btc-bitcoinjs-lib "^5.0.8"
+    js-node-assist "^0.5.6"
+    p-js-error "^0.0.4"
+    p-js-utils "^0.0.8"
+
+"@pefish/js-error@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@pefish/js-error/-/js-error-0.0.5.tgz#be50104cb7e6cb115a31ccdc55dafcf09a65a4ec"
+  integrity sha512-Eypll4OykI0EWj61wx8/cVMVldGjiPJVic/KzK76z1RZiNN9Q2TF7DJif+qg7MBlGbJHAQZ77wIBv5x9fndxpw==
+
+"@pefish/js-node-assist@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@pefish/js-node-assist/-/js-node-assist-0.6.0.tgz#3c9b377c91c1fb91ef5bf1e6023b6cfd2eb4785f"
+  integrity sha512-IczCkklwLQaUz0H+m7r4D/ITe3BV50yZ2IkLC6cXfzHw/yybqmSpMyI44FaywVxMufyhRmFnWSfryd84+ratkw==
+  dependencies:
+    bignumber.js "^8.1.1"
+    p-js-assert "^0.0.1"
+    p-js-error "^0.0.4"
+
+"@pefish/js-util-httprequest@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@pefish/js-util-httprequest/-/js-util-httprequest-0.0.5.tgz#1b4a4552a55dba26d792537f605470a3e741fb67"
+  integrity sha512-S+HFbkIR4KR0yCy5VR468R1BoAeCsb0dO5gfhcwLuCcdBw4GJ9UB24+O1Mt/xCyN8B7Rlh0B0mvX64xaGKhkpw==
+  dependencies:
+    js-node-assist "^0.5.8"
+    p-js-error "^0.0.4"
+    restler "^3.4.0"
+
 "@types/chai@^4.1.7":
   version "4.1.7"
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.1.7.tgz#1b8e33b61a8c09cbe1f85133071baa0dbf9fa71a"
@@ -252,10 +311,10 @@ bs58check@<3.0.0, bs58check@^2.0.0, bs58check@^2.1.1:
     create-hash "^1.1.0"
     safe-buffer "^5.1.2"
 
-btc-bitcoinjs-lib@^5.0.5:
-  version "5.0.5"
-  resolved "https://registry.yarnpkg.com/btc-bitcoinjs-lib/-/btc-bitcoinjs-lib-5.0.5.tgz#f9a63f483c64bd2c86ac9c034c581cc5dc8d36af"
-  integrity sha512-WRHL9+0lQYqIgQ0DXP4hHVQy4vUAlGIr43fl0RXXF7/D36/DU1YsG2tPgGmnWlF5YNUabpPWe0G8t1T1eTlakw==
+btc-bitcoinjs-lib@^5.0.8:
+  version "5.0.8"
+  resolved "https://registry.yarnpkg.com/btc-bitcoinjs-lib/-/btc-bitcoinjs-lib-5.0.8.tgz#b02aa1264ee1abeb42c38d0ba64409e369142674"
+  integrity sha512-cXNWxrTDgFnmJN28C1w7WrlaxGbXMxkbOHgqjISc6TDd+So0ydsaZ+ltDKFGVWMbM0HUDWZXc4P4A650wJh5cg==
   dependencies:
     "@types/node" "10.12.18"
     bech32 "^1.1.2"
@@ -606,32 +665,19 @@ isstream@~0.1.2:
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
 
-js-btc@^0.2.5:
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/js-btc/-/js-btc-0.2.5.tgz#b64ffe209bd5bb42dce4e1296a81958379a1e2ad"
-  integrity sha512-aVjBYAf8SX3I9+WmrH7MpRj8rbWkMXi4FIeuRySCISH2vOaND0xJBOcLlnxcwm62Z6CU8fcdqgSxS6VZxLuEAA==
-  dependencies:
-    bip32 "^1.0.4"
-    bip39 "^3.0.1"
-    bitcoin-core "^2.0.0"
-    btc-bitcoinjs-lib "^5.0.5"
-    js-node-assist "^0.5.6"
-    p-js-error "^0.0.4"
-    p-js-utils "^0.0.8"
-
-js-httprequest@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/js-httprequest/-/js-httprequest-0.0.3.tgz#03ef99b868a8a2bb731711b26c101ad4605e9f6c"
-  integrity sha512-c6isO+fGp/H8HwgMrA9EXO3luWtKdrh/8Xf6a37H55DQuru4QYdD1NLaYVfCY5z25UX/DhWV78492A1M9JcrHQ==
-  dependencies:
-    js-node-assist "^0.5.6"
-    p-js-error "^0.0.4"
-    restler "^3.4.0"
-
 js-node-assist@^0.5.6:
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/js-node-assist/-/js-node-assist-0.5.6.tgz#2c240ed56bacb2395047d271a5c7aeccfea9107f"
   integrity sha512-NLMyvOfUv8rnPu2JKCIEM6VptbuOk8l1meKIV0ew5j9zzBHM1iXg6mVV6cPb8pYXuSnOxUCitSRjA6/1LZ7U3Q==
+  dependencies:
+    bignumber.js "^8.1.1"
+    p-js-assert "^0.0.1"
+    p-js-error "^0.0.4"
+
+js-node-assist@^0.5.8:
+  version "0.5.8"
+  resolved "https://registry.yarnpkg.com/js-node-assist/-/js-node-assist-0.5.8.tgz#02f8a5d9d541eb4f4cc3edfc783af65e219a393d"
+  integrity sha512-zzaMQ8r3XnVFY8KvKgdXaHhRqm1rDJizdlE04Zktay58ObmiNNmUqCBSPSlABlQTiyza5wpSNIFHQLQqHrwl0g==
   dependencies:
     bignumber.js "^8.1.1"
     p-js-assert "^0.0.1"

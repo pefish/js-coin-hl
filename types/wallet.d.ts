@@ -1,4 +1,4 @@
-import BaseWalletHelper from 'js-btc/lib/base/base_bitcoinjs_lib';
+import BaseWalletHelper from '@pefish/js-coin-btc/lib/base/base_bitcoinjs_lib';
 /**
  * 地址相关可以用
  */

@@ -1,6 +1,6 @@
-import 'js-node-assist'
-import HttpRequest from 'js-httprequest'
-import ErrorHelper from 'p-js-error'
+import '@pefish/js-node-assist'
+import HttpRequest from '@pefish/js-util-httprequest'
+import ErrorHelper from '@pefish/js-error'
 
 interface RpcConfig {
   host: string
