@@ -17,12 +17,12 @@ export default class Rpc {
      */
     requestRaw(method: string, params?: Array<any>): Promise<any>;
     request(method: string, params?: Array<any>): Promise<any>;
-    GetLastHeader(): Promise<any>;
+    getLastHeader(): Promise<any>;
     getBlockHash(height: number): Promise<any>;
     getBlockOverview(blockHash: string): Promise<any>;
     queryTransaction(txHash: string): Promise<any>;
     getBalance(address: string): Promise<any>;
-    createRawTransaction(toAddress: string, amount: string): Promise<any>;
+    createRawTransaction(toAddress: string, amount: string, memo?: string): Promise<any>;
     /**
      * 构造并发送不收手续费交易（平行链）
      * @param {string} txHex 未签名的原始交易数据
@@ -31,9 +31,10 @@ export default class Rpc {
      */
     createNoBalanceTransaction(txHex: string, payAddressPriv: string): Promise<any>;
     signRawTx(txHex: string, priv: string): Promise<any>;
-    sendTransaction(txHex: string): Promise<any>;
+    sendTransaction(txHex: string): Promise<string>;
     isSync(): Promise<any>;
     getLastBlockSequence(): Promise<any>;
-    getBlocks(height: number): Promise<any>;
+    getBlocks(startHeight: number, endHeight: number): Promise<any>;
+    getBlock(height: number): Promise<any>;
 }
 export {};

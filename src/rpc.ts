@@ -46,7 +46,7 @@ export default class Rpc {
     return data[`result`]
   }
 
-  async GetLastHeader (): Promise<any> {
+  async getLastHeader (): Promise<any> {
     return await this.request('Chain33.GetLastHeader', [])
   }
 
@@ -76,21 +76,33 @@ export default class Rpc {
   }
 
   async getBalance (address: string): Promise<any> {
-    return await this.request('Chain33.GetBalance', [
+    const results = await this.request('Chain33.GetBalance', [
       {
         addresses: [address],
         execer: `coins`,
       }
     ])
+    for (const { currency, balance, addr, frozen } of results) {
+      if (currency === 0 && addr === address) {
+        return {
+          balance: balance.toString(),
+          frozen: frozen.toString(),
+        }
+      }
+    }
+    return {
+      balance: `0`,
+      frozen: `0`,
+    }
   }
 
-  async createRawTransaction (toAddress: string, amount: string): Promise<any> {
+  async createRawTransaction (toAddress: string, amount: string, memo: string = ``): Promise<any> {
     return await this.request('Chain33.CreateRawTransaction', [
       {
         to: toAddress,
         amount: amount.toNumber_(),
         fee: 0,
-        note: ``,
+        note: memo,
         execName: ``,
       }
     ])
@@ -123,7 +135,7 @@ export default class Rpc {
     ])
   }
 
-  async sendTransaction (txHex: string): Promise<any> {
+  async sendTransaction (txHex: string): Promise<string> {
     return await this.request('Chain33.SendTransaction', [
       {
         data: txHex,
@@ -139,13 +151,27 @@ export default class Rpc {
     return await this.request('Chain33.GetLastBlockSequence', [])
   }
 
-  async getBlocks (height: number): Promise<any> {
+  async getBlocks (startHeight: number, endHeight: number): Promise<any> {
     return await this.request('Chain33.GetBlocks', [
       {
-        start: height,
-        end: height,
+        start: startHeight,
+        end: endHeight,
         isDetail: true,
       }
     ])
+  }
+
+  async getBlock (height: number): Promise<any> {
+    const results = await this.request('Chain33.GetBlocks', [
+      {
+        start: height,
+        end: height,
+        isDetail: false,
+      }
+    ])
+    if (results[`items`].length !== 1) {
+      throw new ErrorHelper(`item length error`)
+    }
+    return results[`items`][0][`block`]
   }
 }
