@@ -87,12 +87,14 @@ export default class Rpc {
         return {
           balance: balance.toString(),
           frozen: frozen.toString(),
+          avail: balance.toString().sub_(frozen)
         }
       }
     }
     return {
       balance: `0`,
       frozen: `0`,
+      avail: `0`
     }
   }
 
