@@ -145,6 +145,14 @@ export default class Remote extends BtcRemote {
     ])
   }
 
+  async decodeRawTransaction (txHex: string): Promise<string> {
+    return await this.request('Chain33.DecodeRawTransaction', [
+      {
+        txHex,
+      }
+    ])
+  }
+
   async isSync (): Promise<any> {
     return await this.request('Chain33.IsSync', [])
   }

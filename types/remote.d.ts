@@ -32,6 +32,7 @@ export default class Remote extends BtcRemote {
     createNoBalanceTransaction(txHex: string, payAddressPriv: string): Promise<any>;
     signRawTx(txHex: string, priv: string): Promise<any>;
     sendTransaction(txHex: string): Promise<string>;
+    decodeRawTransaction(txHex: string): Promise<string>;
     isSync(): Promise<any>;
     getLastBlockSequence(): Promise<any>;
     getBlocks(startHeight: number, endHeight: number): Promise<any>;
