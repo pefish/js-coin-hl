@@ -1,21 +1,21 @@
 import '@pefish/js-node-assist'
 import HttpRequest from '@pefish/js-util-httprequest'
 import ErrorHelper from '@pefish/js-error'
+import { BtcRemote } from '@pefish/js-coin-btc';
 
-interface RpcConfig {
+export interface RemoteConfig {
   host: string
   port: number
   username?: string
   password?: string
 }
 
-export default class Rpc {
-  rpcConfig: RpcConfig
+export default class Remote extends BtcRemote {
   requestUrl: string
 
-  constructor (rpcConfig: RpcConfig) {
-    this.rpcConfig = rpcConfig
-    this.requestUrl = `http://${rpcConfig.host}:${rpcConfig.port}`
+  constructor (remoteConfig: RemoteConfig) {
+    super(remoteConfig)
+    this.requestUrl = `http://${remoteConfig.host}:${remoteConfig.port}`
   }
 
   /**

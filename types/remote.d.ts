@@ -1,14 +1,14 @@
 import '@pefish/js-node-assist';
-interface RpcConfig {
+import { BtcRemote } from '@pefish/js-coin-btc';
+export interface RemoteConfig {
     host: string;
     port: number;
     username?: string;
     password?: string;
 }
-export default class Rpc {
-    rpcConfig: RpcConfig;
+export default class Remote extends BtcRemote {
     requestUrl: string;
-    constructor(rpcConfig: RpcConfig);
+    constructor(remoteConfig: RemoteConfig);
     /**
      * 发送rpc请求
      * @param method {string} 方法名
@@ -37,4 +37,3 @@ export default class Rpc {
     getBlocks(startHeight: number, endHeight: number): Promise<any>;
     getBlock(height: number): Promise<any>;
 }
-export {};

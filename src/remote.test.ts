@@ -1,6 +1,6 @@
 import '@pefish/js-node-assist'
 import assert from 'assert'
-import Rpc from './rpc'
+import Remote from './remote'
 
 declare global {
   namespace NodeJS {
@@ -15,7 +15,7 @@ describe('bitcoinWalletHelper', () => {
   let rpc
 
   before(async () => {
-    rpc = new Rpc({
+    rpc = new Remote({
       host: `47.89.12.159`,
       port: 8901,
     })

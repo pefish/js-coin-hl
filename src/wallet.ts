@@ -1,15 +1,13 @@
-import BaseWalletHelper from '@pefish/js-coin-btc/lib/base/base_bitcoinjs_lib'
+import { BtcWallet } from '@pefish/js-coin-btc'
+import Remote, { RemoteConfig } from './remote'
 
 /**
  * 地址相关可以用
  */
-export default class Wallet extends BaseWalletHelper {
-  decimals: number = 8;
-  bitcoinLib: any
+export default class Wallet extends BtcWallet {
+  remoteClient: Remote
 
-
-  public constructor () {
-    super()
-    this.bitcoinLib = require('@pefish/bitcoinjs-lib')
+  initRemoteClient (config: RemoteConfig): void {
+    this.remoteClient = new Remote(config)
   }
 }
